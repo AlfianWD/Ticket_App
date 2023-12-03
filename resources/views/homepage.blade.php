@@ -8,17 +8,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
+    <link  rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 </head>
 <body class="bg-body-tertiary">
-  <nav class="navbar navbar-expand-lg bg-primary">
+  <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color: #e3f2fd;">
     <div class="container-fluid">
-      <a class="navbar-brand">LOGO KANTOR DESA</a>
+      <a class="navbar-brand d-inline-flex">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="logo" style="width=50px" height="50px" class="ms-2 mt-1 align-item-center">
+        <div style="margin-left: 20px;">
+          <strong style="font-size=12px; display:block;">Desa Rangka Kidul</strong>
+          <span class="fs-6 text">Kabupaten Sidoarjo</span>
+        </div>
+      </a>
+      <div class="d-inline-flex ml-auto text-end">
+        <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
+          <strong>Waktu di Sidoarjo : </strong> 
+          <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+        </a>
+        
+      </div>
     </div>
   </nav>
 
   <main>
     <div class="card-main">
-      <div class="mx-auto shadow-sm p-1 mt-5 container-lg bg-white rounded" style="width:30%;">
+      <div class="mx-auto shadow-sm p-1 mt-4 container-lg bg-white rounded" style="width:30%;">
         <div class="container d-inline-flex grap-5">
           <i class="bi bi-people-fill p-2" style="font-size:24px;"></i>
           <h3 class="p-2">Nomor antrian</h3>  
@@ -36,12 +51,16 @@
   </main>
 
   <footer>
-    <div class="container text-center mt-5">
-      <span class="text-muted ">© {{ date('Y') }} - Ticket-Queqe. All rights reserved.</span> 
+    <div class="container-sm text-center mt-5">
+      <span class="text-muted ">©copyright {{ date('Y')}} - Kelurahan Rangka Kidul. All rights reserved.</span> 
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  <script src="//widget.time.is/id.js"></script>
+  <script>
+    time_is_widget.init({Sidoarjo_z41c:{template:"TIME<br>DATE", date_format:"dayname, dnum monthname year"}});
+  </script>
 </body>
 </html>
