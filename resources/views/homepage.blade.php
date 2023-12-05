@@ -21,32 +21,40 @@
           <span class="fs-6 text">Kabupaten Sidoarjo</span>
         </div>
       </a>
-      <div class="d-inline-flex ml-auto text-end">
-        <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
-          <strong>Waktu di Sidoarjo : </strong> 
-          <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+      <li class="nav nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Time
         </a>
-        
-      </div>
+        <ul class="dropdown-menu-end dropdown-menu">
+          <div class="dropdown-item">
+            <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
+              <strong>Waktu di Sidoarjo : </strong> 
+              <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+            </a>
+          </div>
+        </ul>
+      </li>
     </div>
   </nav>
 
   <main>
-    <div class="card-main">
-      <div class="mx-auto shadow-sm p-1 mt-4 container-lg bg-white rounded" style="width:30%;">
-        <div class="container d-inline-flex grap-5">
-          <i class="bi bi-people-fill p-2" style="font-size:24px;"></i>
-          <h3 class="p-2">Nomor antrian</h3>  
-        </div> 
-      </div>
-
-      <div class="mx-auto shadow-sm p-5 mt-2 container-lg bg-white rounded" style="width:30%;">
-        <div class="p-2 mt-2 border border-success-subtle rounded">
-          <h2 class="text-center m-2">Antrian</h2>
-          <h3 class="text-center" style="font-size:4rem;">....</h3>
+    <div class="container-fluid">
+        <div class="container shadow-sm mt-4 bg-white rounded">
+          <div class="container-sm d-inline-flex grap-5">
+            <i class="bi bi-people-fill p-1 fs-3"></i>
+            <h3 class="p-2">Nomor antrian</h3>  
+          </div> 
         </div>
-        <button type="button" class="mt-5 btn btn-outline-primary" style="width:100%;">Ambil antrian</button>
-      </div>
+
+        <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
+          <div class="container-lg p-2 border rounded-4">
+            <h2 class="text-center">Antrian</h2>
+            <h3 class="text-center mt-4" style="font-size:4rem;">....</h3>
+          </div>
+          <div class="d-grip">
+            <button type="button" class="mt-5 btn btn-outline-primary" style="width:100%;">Ambil antrian</button>
+          </div>
+        </div>
     </div>
   </main>
 
