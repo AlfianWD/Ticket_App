@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
-    <link  rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link  rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
 
 </head>
 <body>
@@ -24,6 +24,104 @@
           </a>
         </div>
     </nav>
+
+    {{-- <main>
+      <div class="container-fluid d-flex flex-lg-row flex-column mt-3 gap-5 justify-content-center">
+          <div class="container bg-white shadow-sm rounded p-3">
+              <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-people-fill fs-2 me-2"></i>
+                  <h3 class="fs-5">Jumlah Antrian</h3>
+              </div>
+              <div>
+                  <span>Hallo World</span>
+              </div>
+          </div>
+  
+          <div class="container bg-white shadow-sm rounded p-3">
+              <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-people-fill fs-2 me-2"></i>
+                  <h3 class="fs-5">Antrian Sekarang</h3>
+              </div>
+              <div>
+                  <span>Hallo World</span>
+              </div>
+          </div>
+  
+          <div class="container bg-white shadow-sm rounded p-3">
+              <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-people-fill fs-2 me-2"></i>
+                  <h3 class="fs-5">Antrian Selanjutnya</h3>
+              </div>
+              <div>
+                  <span>Hallo World</span>
+              </div>
+          </div>
+  
+          <div class="container bg-white shadow-sm rounded p-3">
+              <div class="d-flex align-items-center mb-3">
+                  <i class="bi bi-people-fill fs-2 me-2"></i>
+                  <h3 class="fs-5">Sisa Antrian</h3>
+              </div>
+              <div>
+                  <span>Hallo World</span>
+              </div>
+          </div>
+      </div>
+  </main> --}}
+  
+    
+    <main>
+      <div class="container-fluid d-flex flex-lg-row flex-column p-5 gap-5 justify-content-center">
+        <div class="container bg-white shadow-sm rounded p-3">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <h3 class="fs-5 mt-2">Jumlah Antrian</h3>
+          </div>
+
+          <div>
+            <span>Hallo World</span>
+          </div>
+        </div>
+
+        <div class="container bg-white shadow-sm rounded p-3">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <h3 class="fs-5 mt-2">Antrian Sekarang</h3>
+          </div>
+
+          <div>
+            <span>Hallo World</span>
+          </div>
+        </div>
+
+        <div class="container bg-white shadow-sm rounded p-3">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <h3 class="fs-5 mt-2">Antrian Selanjutnya</h3>
+          </div>
+
+          <div>
+            <span>Hallo World</span>
+          </div>
+        </div>
+
+        <div class="container bg-white shadow-sm rounded p-3">
+          <div class="d-flex align-items-center mb-3">
+            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <h3 class="fs-5 mt-2">Sisa Antrian</h3>
+          </div>
+
+          <div>
+            <span>Hallo World</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid mt-2">
+        <div class="container bg-white shadow-sm rounded">
+        </div>
+      </div>
+    </main>
 
     <footer>
         <div class="container-sm text-center mt-5">

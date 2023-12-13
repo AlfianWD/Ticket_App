@@ -26,12 +26,12 @@
           Time
         </a>
         <ul class="dropdown-menu-end dropdown-menu">
-          {{-- <div class="dropdown-item">
+          <div class="dropdown-item">
             <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
               <strong>Waktu di Sidoarjo : </strong> 
               <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
             </a>
-          </div> --}}
+          </div>
         </ul>
       </li>
     </div>
