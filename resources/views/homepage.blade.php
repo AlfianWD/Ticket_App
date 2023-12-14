@@ -12,7 +12,7 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color: #9EC8B9;">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand d-inline-flex">
         <img src="{{ asset('assets/images/logo.png') }}" alt="logo" width="50px" height="50px" class="ms-2 mt-1 align-item-center">
@@ -21,19 +21,26 @@
           <span class="fs-6 text">Kabupaten Sidoarjo</span>
         </div>
       </a>
-      <li class="nav nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Time
+
+    
+      <div class="d-flex">
+        <li class="nav nav-item dropdown me-2">
+          <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Time
+          </a>
+          <ul class="dropdown-menu-end dropdown-menu">
+            <div class="dropdown-item">
+              <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
+                <strong>Waktu di Sidoarjo : </strong> 
+                <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+              </a>
+            </div>
+          </ul>
+        </li>
+        <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0" href="login.html">
+          Login
         </a>
-        <ul class="dropdown-menu-end dropdown-menu">
-          <div class="dropdown-item">
-            <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
-              <strong>Waktu di Sidoarjo : </strong> 
-              <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
-            </a>
-          </div>
-        </ul>
-      </li>
+      </div>
     </div>
   </nav>
 
@@ -75,6 +82,5 @@
         }
     });
   </script>
-  {{-- <script src="{{ asset('assets/js/app.js') }}"></script> --}}
 </body>
 </html>
