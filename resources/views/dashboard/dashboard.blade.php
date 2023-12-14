@@ -24,51 +24,6 @@
           </a>
         </div>
     </nav>
-
-    {{-- <main>
-      <div class="container-fluid d-flex flex-lg-row flex-column mt-3 gap-5 justify-content-center">
-          <div class="container bg-white shadow-sm rounded p-3">
-              <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-people-fill fs-2 me-2"></i>
-                  <h3 class="fs-5">Jumlah Antrian</h3>
-              </div>
-              <div>
-                  <span>Hallo World</span>
-              </div>
-          </div>
-  
-          <div class="container bg-white shadow-sm rounded p-3">
-              <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-people-fill fs-2 me-2"></i>
-                  <h3 class="fs-5">Antrian Sekarang</h3>
-              </div>
-              <div>
-                  <span>Hallo World</span>
-              </div>
-          </div>
-  
-          <div class="container bg-white shadow-sm rounded p-3">
-              <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-people-fill fs-2 me-2"></i>
-                  <h3 class="fs-5">Antrian Selanjutnya</h3>
-              </div>
-              <div>
-                  <span>Hallo World</span>
-              </div>
-          </div>
-  
-          <div class="container bg-white shadow-sm rounded p-3">
-              <div class="d-flex align-items-center mb-3">
-                  <i class="bi bi-people-fill fs-2 me-2"></i>
-                  <h3 class="fs-5">Sisa Antrian</h3>
-              </div>
-              <div>
-                  <span>Hallo World</span>
-              </div>
-          </div>
-      </div>
-  </main> --}}
-  
     
     <main>
       <div class="container-fluid d-flex flex-lg-row flex-column p-5 gap-5 justify-content-center">
@@ -119,6 +74,20 @@
 
       <div class="container-fluid mt-2">
         <div class="container bg-white shadow-sm rounded">
+          <table id="tabel" class="table table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th scope="col">Nomor antrian</th>
+                <th scope="col">Panggil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </main>
@@ -131,6 +100,9 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script scr="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
 </html>
