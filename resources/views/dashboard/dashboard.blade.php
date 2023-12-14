@@ -13,15 +13,35 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg shadow-sm sticky-top" style="background-color: #9EC8B9;">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand d-inline-flex">
             <img src="{{ asset('assets/images/logo.png') }}" alt="logo" width="50px" height="50px" class="ms-2 mt-1 align-item-center">
             <div style="margin-left:20px;">
               <strong style="font-size:16px; display:block;">Desa Rangkah Kidul</strong>
               <span class="fs-6 text">Kabupaten Sidoarjo</span>
-            </div>
+            </div>     
           </a>
+          <div class="container-fluid  d-flex flex-row-reverse">
+            <li class="nav nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-black align-item-center mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                .....
+              </a>
+              <ul class="dropdown-menu-end dropdown-menu">
+                <div class="">
+                  <li>
+                    <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="dropdown-item text-decoration-none text-dark">
+                      <strong>Waktu di Sidoarjo : </strong> 
+                      <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+                    </a>
+                  </li>   
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a href="login.html" class="dropdown-item text-black link-underline link-underline-opacity-0">Logout</a></li>
+                </div>
+              </ul>
+            </li>
+            <i class="bi bi-person-circle align-item-center ms-2 me-1 fs-2"></i>
+          </div>
         </div>
     </nav>
     
@@ -40,7 +60,7 @@
 
         <div class="container bg-white shadow-sm rounded p-3">
           <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <i class="bi bi-person-check-fill me-2 fs-2"></i>
             <h3 class="fs-5 mt-2">Antrian Sekarang</h3>
           </div>
 
@@ -51,7 +71,7 @@
 
         <div class="container bg-white shadow-sm rounded p-3">
           <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <i class="bi bi-person-plus-fill me-2 fs-2"></i>
             <h3 class="fs-5 mt-2">Antrian Selanjutnya</h3>
           </div>
 
@@ -62,7 +82,7 @@
 
         <div class="container bg-white shadow-sm rounded p-3">
           <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-people-fill me-2 fs-2"></i>
+            <i class="bi bi-person-fill me-2 fs-2"></i>
             <h3 class="fs-5 mt-2">Sisa Antrian</h3>
           </div>
 
