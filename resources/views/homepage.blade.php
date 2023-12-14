@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 
-    <link  rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
 </head>
 <body>
@@ -37,7 +37,7 @@
             </div>
           </ul>
         </li>
-        <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0" href="login.html">
+        <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0 rounded-pill" href="login.html">
           Login
         </a>
       </div>
@@ -56,10 +56,10 @@
         <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
           <div class="container-lg p-2 border rounded-4">
             <h2 class="text-center">Antrian</h2>
-            <h3 class="text-center mt-4" style="font-size:4rem;">....</h3>
+            <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">01</h3>
           </div>
           <div class="d-grip">
-            <button type="button" class="mt-5 btn btn-outline-primary" style="width:100%;">Ambil antrian</button>
+            <button type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian</button>
           </div>
         </div>
     </div>
@@ -82,5 +82,6 @@
         }
     });
   </script>
+  <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>
