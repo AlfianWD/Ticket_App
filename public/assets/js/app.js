@@ -19,7 +19,7 @@ function resetAntrian() {
     const currentTime = new Date();
     const currentDay = currentTime.getDate();
 
-    if (nomorAntrian > 0 && currentMinute !== currentTime.getDate()) {
+    if (nomorAntrian > 0 && currentDay !== currentTime.getDate()) {
         nomorAntrian = 1;
     }
 
