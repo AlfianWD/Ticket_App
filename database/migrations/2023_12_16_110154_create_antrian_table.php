@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('antrian', function (Blueprint $table) {
             $table->id('no');
             $table->integer('nomor_antrian');
-            $table->date('tanggal');
-            $table->timestamps();
+            $table->dateTime('tanggal');
         });
     }
 
