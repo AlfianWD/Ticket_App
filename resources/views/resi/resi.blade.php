@@ -49,13 +49,13 @@
             <div class="container shadow-sm mt-4 bg-white rounded">
               <div class="container-sm d-inline-flex grap-5">
                 <i class="bi bi-people-fill p-1 fs-3"></i>
-                <h3 class="p-2">Antrian Anda</h3>  
+                <h3 class="p-2">Nomor Antrian</h3>  
               </div> 
             </div>
     
             <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
               <div class="container-lg p-2 border rounded-4">
-                <h2 class="text-center">Nomor Antrian</h2>
+                <h2 class="text-center">Antrian Anda</h2>
                 <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">00</h3>
               </div>
             </div>
