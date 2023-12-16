@@ -6,6 +6,3 @@ if(antrianAndaElement){
     const formatNomorAntrian = String(nomorAntrian).padStart(2, "0");
     document.getElementById('nomorAntrian').innerText = formatNomorAntrian; 
 }
-
-
-
