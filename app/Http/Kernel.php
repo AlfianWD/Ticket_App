@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'antrian.taken' => \App\Http\Middleware\RedirectIfNotAntrianTaken::class
+        'antrian.taken' => \App\Http\Middleware\RedirectIfNotAntrianTaken::class,
+        'resi.access' => \App\Http\Middleware\CekNomorAntrianDiambil::class,
     ];
 }

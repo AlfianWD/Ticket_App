@@ -25,4 +25,6 @@ class NomorAntrianController extends Controller
             return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
         }
     } 
+
+    
 }

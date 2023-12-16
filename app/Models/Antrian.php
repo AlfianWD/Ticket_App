@@ -9,6 +9,7 @@ class Antrian extends Model
 {
     protected $table = 'antrian'; 
     protected $fillable = ['nomor_antrian','tanggal'];
+    
     public $timestamps = false;
 
     protected static function booted() {

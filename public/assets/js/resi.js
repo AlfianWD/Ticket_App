@@ -1,4 +1,4 @@
-let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 1; 
+let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 0; 
 
 const antrianAndaElement = document.getElementById('nomorAntrian');
 

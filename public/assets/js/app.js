@@ -1,5 +1,7 @@
 let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 0; 
 
+let ambilAntrianDipanggil = false;
+
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 function updateNomorAntrian() {
@@ -14,7 +16,6 @@ function ambilAntrian() {
     nomorAntrian++;
 
     const tanggal = new Date().toLocaleDateString();
-
 
     fetch('/simpan-nomor-antrian', {
         method: 'POST',

@@ -104,13 +104,11 @@
             <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">00</h3>
           </div>
           <div class="d-grip">
-            <a type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian anda disini</a>
+            <a type="button" href="{{ asset('resi')}}" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian anda disini</a>
           </div>
         </div>
     </div>
   </main>
-
-  {{-- href="{{ asset('resi')}}"  --}}
 
   <footer>
     <div class="container-sm text-center mt-5">
