@@ -1,5 +1,4 @@
-let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 1;
-let lastMinute = -1;
+let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 1; 
 
 function updateNomorAntrian() {
     const formatNomorAntrian = String(nomorAntrian).padStart(2, "0");
@@ -9,10 +8,11 @@ function updateNomorAntrian() {
 }
 
 function ambilAntrian() {
-  
+
     nomorAntrian++;
 
     updateNomorAntrian();
+
 }
 
 function resetAntrian() {

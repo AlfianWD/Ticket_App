@@ -55,11 +55,11 @@
 
         <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
           <div class="container-lg p-2 border rounded-4">
-            <h2 class="text-center">Antrian</h2>
+            <h2 class="text-center">Antrian Sebelumnya</h2>
             <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">01</h3>
           </div>
           <div class="d-grip">
-            <button type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian</button>
+            <a type="button" href="{{ asset('resi')}}" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian anda disini</a>
           </div>
         </div>
     </div>
