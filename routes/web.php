@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/resi', function(){
     return view('resi/resi');
-})->middleware('antrian.taken');
+});
