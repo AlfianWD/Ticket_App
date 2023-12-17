@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RedirectIfNotAntrianTaken
+class AuthMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,10 @@ class RedirectIfNotAntrianTaken
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $nomorAntrian = $request->session()->get('nomorAntrian');
-
-        if(!$nomorAntrian) {
-            return redirect('/');
+        if(auth()->check()) {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect('/login');
     }
 }

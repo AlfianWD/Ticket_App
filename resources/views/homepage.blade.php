@@ -41,7 +41,7 @@
             </div>
           </ul>
         </li>
-        <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0 rounded-pill" href="login.html">
+        <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0 rounded-pill" href="{{ asset('login') }}">
           Login
         </a>
       </div>
@@ -80,7 +80,7 @@
                 </ul>
               </li>
             </ul>
-            <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black mt-2 link-underline link-underline-opacity-0 rounded text-center" href="login.html">
+            <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black mt-2 link-underline link-underline-opacity-0 rounded text-center" href="{{ asset('login')}}">
               Login
             </a>
           </div>
