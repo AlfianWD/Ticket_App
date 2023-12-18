@@ -13,6 +13,7 @@
 
 </head>
 <body>
+  @if(auth()->check())
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand d-inline-flex">
@@ -25,7 +26,9 @@
           <div class="container-fluid  d-flex flex-row-reverse">
             <li class="nav nav-item dropdown">
               <a class="nav-link dropdown-toggle text-black align-item-center mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                admin
+                @auth
+                  {{ auth()->user()->username }}
+                @endauth
               </a>
               <ul class="dropdown-menu-end dropdown-menu">
                 <div class="">
@@ -36,7 +39,11 @@
                     </a>
                   </li>   
                   <li><hr class="dropdown-divider"></li>
-                  <li><a href="..." class="dropdown-item text-black link-underline link-underline-opacity-0">Logout</a></li>
+                  <li>
+                    <form method="post" action="{{ route('logout') }}">
+                      @csrf
+                      <button type="submit" class="dropdown-item text-black link-underline link-underline-opacity-0">Logout</button>
+                    </form>
                 </div>
               </ul>
             </li>
@@ -44,8 +51,6 @@
           </div>
         </div>
     </nav>
-
-    @include('flash-message')
     
     <main>
       <div class="container-fluid d-flex flex-lg-row flex-column p-5 gap-5 justify-content-center">
@@ -119,6 +124,10 @@
           <span class="text-muted ">©copyright {{ date('Y')}} - Desa Rangkah Kidul. All rights reserved.</span> 
         </div>
     </footer>
+
+  @else
+    <p>You are not authenticated.</p>
+  @endif
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
@@ -126,5 +135,6 @@
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
-</body>
+  </body>
+
 </html>

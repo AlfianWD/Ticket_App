@@ -13,12 +13,13 @@ class AuthMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if(auth()->check()) {
-            return $next($request);
+        if (!auth()->check()) {
+            return redirect('/login')->with('message', 'You need to login first.');
         }
 
-        return redirect('/login');
+        return $next($request);
+        
     }
 }

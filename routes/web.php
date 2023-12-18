@@ -25,35 +25,14 @@ Route::get('/resi', function(){
 });
 
 Route::post('/simpan-nomor-antrian', [NomorAntrianController::class, 'saveNomorAntrian']);
-// Route::post('/login', [LoginController::class, 'login']);
-
-// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-
+    
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
-Route::get('/dashboard', function () {
-    if (auth()->check()) {
-        return view('dashboard/dashboard');
-    } else {
-        return redirect('/login');
-    }
-})->middleware('auth')->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('resi/dashboard');
+    })->name('dashboard');
 
-// Route::middleware(['web', 'auth'])->group(function() {
-//     Route::get('/dashboard', function() {
-//         return view ('dashboard/dashboard');
-//     })->name('dashboard');
-// });
-
-
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard.dashboard');
-//     })->name('dashboard');
-
-//     Route::get('/logout', function () {
-//         auth()->logout();
-//         return redirect()->route('login');
-//     })->name('logout');
-// });
+    Route::post('/logout', 'LoginController@logout')->name('logout');
+});
