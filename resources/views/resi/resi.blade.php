@@ -102,7 +102,7 @@
             <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">00</h3>
           </div>
           <div class="d-grip">
-            <a type="button" class="mt-5 btn btn-outline-primary" style="width:100%;">kembali</a>
+            <a type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="kembaliKeHalamanUtama()">kembali</a>
           </div>
         </div>
     </div>

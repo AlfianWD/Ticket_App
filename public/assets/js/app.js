@@ -1,5 +1,4 @@
 let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 0; 
-
 let ambilAntrianDipanggil = false;
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -17,6 +16,8 @@ function ambilAntrian() {
 
     const tanggal = new Date().toLocaleDateString();
 
+    localStorage.setItem('Antrian_button_click', 'true');
+
     fetch('/simpan-nomor-antrian', {
         method: 'POST',
         headers: {
@@ -26,11 +27,13 @@ function ambilAntrian() {
         body: JSON.stringify({
             nomorAntrian: nomorAntrian,
             tanggal: tanggal,
+            tombolDiklik: true,
         }),
     })
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        window.location.href = '/resi';
     })
     .catch(error => {
         console.log('gagal mengirim data:', error);
@@ -46,6 +49,25 @@ function resetAntrian() {
 
     if (currentTime !== lastResetDay) {
         nomorAntrian = 0;
+
+        fetch('/tandai-reset-antrian', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'X-CSRF-TOKEN' : csrfToken
+            },
+            body: JSON.stringify({
+                resetAntrian: true,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log('gagal mengirim data:', error);
+        });
+
         localStorage.setItem('lastResetDay', currentTime)
     }
 

@@ -45,7 +45,7 @@ class Kernel extends HttpKernel
         ],
 
         'auth' => [ 
-            \App\Http\Middleware\AuthMiddleware::class
+            \App\Http\Middleware\AuthMiddleware::class,
         ],
     ];
 
@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'auth.nomor.antrian' => \App\Http\Middleware\AuthNomorAntrian::class
     ];
 }

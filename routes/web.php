@@ -20,9 +20,6 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/resi', function(){
-    return view('resi/resi');
-});
 
 Route::post('/simpan-nomor-antrian', [NomorAntrianController::class, 'saveNomorAntrian']);
     
@@ -35,4 +32,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::post('/logout', 'LoginController@logout')->name('logout');
+});
+
+Route::middleware(['check.nomor.antrian'])->group(function () {
+    Route::get('/resi', 'ResiController@index')->name('resi');
 });
