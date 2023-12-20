@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('dashboard/login');
+        return view('/login');
     }
 
     public function login(Request $request)
@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         if ($user && $user->password === $password) {
             Auth::loginUsingId($user->id);
-            return redirect()->route('dashboard')->with('success', 'Login successful.');
+            return redirect('/dashboard');
         } else {
             return back()->with('message', 'Username or password is incorrect.');
         }

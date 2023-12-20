@@ -16,7 +16,7 @@ class AuthNomorAntrian
     public function handle(Request $request, Closure $next)
     {
 
-        if(!session('Antrian_button_click')) {
+        if(session('Antrian_button_click')) {
             return redirect('/')->with('message', 'You need to get antrian first.');
         }
 

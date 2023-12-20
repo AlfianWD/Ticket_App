@@ -57,7 +57,7 @@ function resetAntrian() {
                 'X-CSRF-TOKEN' : csrfToken
             },
             body: JSON.stringify({
-                resetAntrian: true,
+                resetAntrian: false,
             }),
         })
         .then(response => response.json())
@@ -74,8 +74,9 @@ function resetAntrian() {
     updateNomorAntrian();
 }
 
-updateNomorAntrian();
 
+updateNomorAntrian();
 resetAntrian();
+
 
 setInterval(resetAntrian, 86400000);

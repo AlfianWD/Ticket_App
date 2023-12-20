@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NomorAntrianController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResiController;
 
 
 /*
@@ -18,8 +19,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('homepage');
-});
-
+}); 
 
 Route::post('/simpan-nomor-antrian', [NomorAntrianController::class, 'saveNomorAntrian']);
     
@@ -27,13 +27,11 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('resi/dashboard');
-    })->name('dashboard');
-
-    Route::post('/logout', 'LoginController@logout')->name('logout');
+    Route::get('/dashboard', [NomorAntrianController::class, 'view']);
+    Route::post('/panggil-antrian', [NomorAntrianController::class, 'saveDataNomorAntrian']);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['check.nomor.antrian'])->group(function () {
-    Route::get('/resi', 'ResiController@index')->name('resi');
+    Route::get('/resi', [ResiController::class, 'index'])->name('resi');
 });

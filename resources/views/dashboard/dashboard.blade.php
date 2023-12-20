@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="total-antrian" content="{{ $totalAntrian ?? 0 }}">
+    <meta name="antrian-sekarang" content="{{ $antrianSekarang->nomor_antrian ?? 0 }}">
+    <meta name="antrian-selanjutnya" content="{{ $antrianSelanjutnya->nomor_antrian ?? 0 }}">
+    <meta name="sisa-antrian" content="{{ $sisaAntrian ?? 0 }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Dashboard | Ticket_App</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-
     <link  rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 
 </head>
 <body>
-  @if(auth()->check())
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
           <a class="navbar-brand d-inline-flex">
@@ -61,7 +64,7 @@
           </div>
 
           <div>
-            <span>Hallo World</span>
+            <h1 id="totalAntrian">{{ $totalAntrian }}</h1>
           </div>
         </div>
 
@@ -72,7 +75,7 @@
           </div>
 
           <div>
-            <span>Hallo World</span>
+            <h1 id="antrianSekarang">{{ $antrianSekarang->nomor_antrian ?? '00' }}</h1>
           </div>
         </div>
 
@@ -83,7 +86,7 @@
           </div>
 
           <div>
-            <span>Hallo World</span>
+            <h1 id="antrianSelanjutnya">{{ $antrianSelanjutnya->nomor_antrian ?? '00' }}</h1>
           </div>
         </div>
 
@@ -94,27 +97,59 @@
           </div>
 
           <div>
-            <span>Hallo World</span>
+            <h1 id="sisaAntrian">{{ $sisaAntrian->nomor ?? '0' }}</h1>
           </div>
         </div>
       </div>
 
       <div class="container-fluid mt-2">
-        <div class="container-md bg-white shadow-sm border border-black rounded">
-          <table id="tabel" class="table table-striped" style="width:100%">
-            <thead>
-              <tr>
-                <th scope="col">Nomor antrian</th>
-                <th scope="col">Panggil</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
+        <div class="container-md border bg-white border-black rounded">
+          <div class="container-md d-grid gap-2 d-md-block">
+            <button type="button" class="shadow-md mx-auto btn btn-outline-primary mt-4 ms-2 mb-4">Refresh</button>
+          </div>
+          <div class="container-md bg-white shadow-sm rounded">
+            <table id="tabel" class="table table-striped" style="width:100%">
+              <thead>
+                  <tr>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Nomor antrian</th>
+                      <th scope="col">Panggil</th>
+                  </tr>
+              </thead>
+              <tbody id="tabelBody">
+                @if(isset($nomor))
+                  @foreach ($nomor as $nomor_antrian)
+                      <tr>
+                          <td>{{ $nomor_antrian->tanggal }}</td>
+                          <td>{{ $nomor_antrian->nomor_antrian }}</td>
+                          <td>
+                            <button id="btnPanggil" type="button" class="btn btn-outline-success">
+                              <span>panggil</span>
+                            </button>
+                          </td>
+                      </tr>
+                  @endforeach
+                @else
+                  <tr>
+                    <td>Tidak ada data yang didapatkan
+                  </tr>
+                @endif
+              </tbody>
           </table>
+          </div>
+          <nav aria-label="Page navigation example">
+            <ul class="mt-4 mb-5 pagination justify-content-end">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </main>
@@ -124,17 +159,19 @@
           <span class="text-muted ">©copyright {{ date('Y')}} - Desa Rangkah Kidul. All rights reserved.</span> 
         </div>
     </footer>
-
-  @else
-    <p>You are not authenticated.</p>
-  @endif
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-    <script scr="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//widget.time.is/id.js"></script>
+    <script>
+      time_is_widget.init({
+          Sidoarjo_z41c: {
+              template:"TIME<br>DATE", 
+              date_format:"dayname, dnum monthname year"
+          }
+      });
+    </script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
   </body>
-
 </html>

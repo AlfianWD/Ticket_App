@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Antrian extends Model
 {
     protected $table = 'antrian'; 
-    protected $fillable = ['nomor_antrian','tanggal'];
+
+    protected $primaryKey = 'no';
+    
+    protected $fillable = [
+        'nomor_antrian',
+        'tanggal'
+    ];
     
     public $timestamps = false;
 
@@ -16,9 +22,5 @@ class Antrian extends Model
         static::saving(function ($antrian) {
             $antrian->tanggal = now();
         });
-    }
-
-    public function getTanggalAttribute() {
-        return now();
     }
 }

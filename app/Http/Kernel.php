@@ -47,6 +47,10 @@ class Kernel extends HttpKernel
         'auth' => [ 
             \App\Http\Middleware\AuthMiddleware::class,
         ],
+
+        'check.nomor.antrian' => [
+            \App\Http\Middleware\AuthNomorAntrian::class,
+        ],
     ];
 
     /**
@@ -68,6 +72,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'auth.nomor.antrian' => \App\Http\Middleware\AuthNomorAntrian::class
+        'auth.nomor.antrian' => \App\Http\Middleware\AuthNomorAntrian::class,
     ];
 }
