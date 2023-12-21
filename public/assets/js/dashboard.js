@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var antrianSekarang = localStorage.getItem('antrianSekarang') || document.head.querySelector('meta[name="antrian-sekarang"]').getAttribute('content');
     var antrianSelanjutnya = localStorage.getItem('antrianSelanjutnya') || document.head.querySelector('meta[name="antrian-selanjutnya"]').getAttribute('content');
     var sisaAntrian = localStorage.getItem('sisaAntrian') || document.head.querySelector('meta[name="sisa-antrian"]').getAttribute('content');
+    var btnPanggilPressed = JSON.parse(localStorage.getItem('btnPanggilPressed')) || {};
 
     localStorage.setItem('totalAntrian', totalAntrian);
     localStorage.setItem('antrianSekarang', antrianSekarang);
@@ -16,45 +17,76 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya;
     document.getElementById('sisaAntrian').textContent = sisaAntrian;
 
-    const btnPanggil = document.getElementById('btnPanggil');
+    const tabelBody = document.getElementById('tabelBody');
 
-    if (btnPanggil) {
-        const btnPanggilRow = btnPanggil.closest('tr');
-        btnPanggilRow.classList.add('disabled');
-        btnPanggilRow.querySelector('button').setAttribute('disabled', true);
-        btnPanggilRow.querySelector('button').classList.replace('btn-outline-success', 'btn-outline-secondary');
-    }
-    
-    btnPanggil.addEventListener('click', function () {
-        fetch('/panggil-antrian', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-            },
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            tabelBody.addEventListener('click', function (event) {
+                const clickedButton = event.target.closest('.btnPanggil');
+
+                if (clickedButton) {
+                    const nomorAntrian = clickedButton.dataset.no;
+
+                    handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed);
+                }
+            });
+
+            if (btnPanggilPressed) {
+                const btnPanggilList = document.querySelectorAll('.btnPanggil');
+                btnPanggilList.forEach(clickedButton => {
+                    const nomorAntrian = clickedButton.dataset.no;
+                    if (btnPanggilPressed[nomorAntrian]) {
+                        const btnPanggilRow = clickedButton.closest('tr');
+                        btnPanggilRow.classList.add('disabled');
+                        clickedButton.setAttribute('disabled', true);
+                        clickedButton.classList.replace('btn-outline-success', 'btn-outline-secondary');
+                    }
+                });
             }
-            return response.json();
-        })
-        .then(data => {
-            antrianSekarang = data.antrianSekarang;
-            antrianSelanjutnya = data.antrianSelanjutnya;
+});
 
-            const btnPanggilRow = btnPanggil.closest('tr');
-            btnPanggilRow.classList.add('disabled');
-            btnPanggilRow.querySelector('button').setAttribute('disabled', true);
-            btnPanggilRow.querySelector('button').classList.replace('btn-outline-success', 'btn-outline-secondary');
+function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed) {
 
-            document.getElementById('antrianSekarang').textContent = antrianSekarang.nomor_antrian;
-            document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya.nomor_antrian;
-            document.getElementById('sisaAntrian').textContent = Math.abs(antrianSekarang.nomor_antrian-totalAntrian);
+    const btnPanggilRow = clickedButton.closest('tr');
+    if (btnPanggilRow) {
+        btnPanggilRow.classList.add('disabled');
+        clickedButton.setAttribute('disabled', true);
+        clickedButton.classList.replace('btn-outline-success', 'btn-outline-secondary');
 
-            localStorage.setItem('antrianSekarang', antrianSekarang.nomor_antrian);
-            localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya.nomor_antrian);
-            localStorage.setItem('sisaAntrian', Math.abs(antrianSekarang.nomor_antrian-totalAntrian))
-        })
-        .catch(error => console.error('Error:', error));
+        btnPanggilPressed[nomorAntrian] = true;
+        localStorage.setItem('btnPanggilPressed', JSON.stringify(btnPanggilPressed));
+
+        document.getElementById('antrianSekarang').textContent = nomorAntrian;
+        localStorage.setItem('antrianSekarang', nomorAntrian);
+
+        const totalAntrian = parseInt(localStorage.getItem('totalAntrian'));
+        const antrianSekarang = parseInt(nomorAntrian);
+        const antrianSelanjutnya = parseInt(nomorAntrian) + 1;
+        const sisaAntrian = totalAntrian - antrianSekarang;
+
+        document.getElementById('totalAntrian').textContent = totalAntrian;
+        document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya;
+        document.getElementById('sisaAntrian').textContent = sisaAntrian;
+
+        localStorage.setItem('totalAntrian', totalAntrian);
+        localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
+        localStorage.setItem('sisaAntrian', sisaAntrian);
+    } else {
+        console.error('Elemen closest tr tidak ditemukan.');
+    }
+}
+
+document.getElementById('btnRefresh').addEventListener('click', function() {
+    location.reload();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    console.log('Navbar element:', navbar);
+
+    window.addEventListener('scroll', function() {
+        if(window.scrollY > 1) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
     });
 });

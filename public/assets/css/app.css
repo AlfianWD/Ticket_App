@@ -2,6 +2,11 @@ body {
     background-image: url('../images/background.jpg');
 }
 
+.navbar-scrolled {
+    background-color: rgb(0, 255, 145);
+    transition: background-color 0.3s ease-in-out;
+}
+
 .container {
     border: 1px solid #5C8374;
 }

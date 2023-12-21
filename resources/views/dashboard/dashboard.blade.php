@@ -26,31 +26,42 @@
               <span class="fs-6 text">Kabupaten Sidoarjo</span>
             </div>     
           </a>
-          <div class="container-fluid  d-flex flex-row-reverse">
-            <li class="nav nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-black align-item-center mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @auth
-                  {{ auth()->user()->username }}
-                @endauth
-              </a>
-              <ul class="dropdown-menu-end dropdown-menu">
-                <div class="">
-                  <li>
-                    <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="dropdown-item text-decoration-none text-dark">
-                      <strong>Waktu di Sidoarjo : </strong> 
-                      <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
-                    </a>
-                  </li>   
-                  <li><hr class="dropdown-divider"></li>
-                  <li>
-                    <form method="post" action="{{ route('logout') }}">
-                      @csrf
-                      <button type="submit" class="dropdown-item text-black link-underline link-underline-opacity-0">Logout</button>
-                    </form>
-                </div>
-              </ul>
-            </li>
-            <i class="bi bi-person-circle align-item-center ms-2 me-1 fs-2"></i>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav ms-auto">
+              <div class="container-fluid  d-flex flex-row-reverse">
+                <li class="nav nav-item dropdown d-inline-flex">
+                  <i class="bi bi-person-circle align-item-center fs-2"></i>
+                  <a class="nav-link dropdown-toggle text-black align-item-center mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @auth
+                      {{ auth()->user()->username }}
+                    @endauth
+                  </a>
+                  <ul class="dropdown-menu-end dropdown-menu">
+                    <div class="">
+                      <li>
+                        <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="dropdown-item text-decoration-none text-dark">
+                          <strong>Waktu di Sidoarjo : </strong> 
+                          <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
+                        </a>
+                      </li>   
+                      <li><hr class="dropdown-divider"></li>
+                      <li>
+                        <form method="post" action="{{ route('logout') }}">
+                          @csrf
+                          <button type="submit" class="dropdown-item text-black link-underline link-underline-opacity-0">Logout</button>
+                        </form>
+                    </div>
+                  </ul>
+                </li>
+               
+              </div>
+            </div>
           </div>
         </div>
     </nav>
@@ -105,7 +116,7 @@
       <div class="container-fluid mt-2">
         <div class="container-md border bg-white border-black rounded">
           <div class="container-md d-grid gap-2 d-md-block">
-            <button type="button" class="shadow-md mx-auto btn btn-outline-primary mt-4 ms-2 mb-4">Refresh</button>
+            <button type="button" id="btnRefresh" class="shadow-md mx-auto btn btn-outline-primary mt-4 ms-2 mb-4">Refresh</button>
           </div>
           <div class="container-md bg-white shadow-sm rounded">
             <table id="tabel" class="table table-striped" style="width:100%">
@@ -123,9 +134,9 @@
                           <td>{{ $nomor_antrian->tanggal }}</td>
                           <td>{{ $nomor_antrian->nomor_antrian }}</td>
                           <td>
-                            <button id="btnPanggil" type="button" class="btn btn-outline-success">
+                            <button class="btnPanggil btn btn-outline-success" data-no="{{ $nomor_antrian->nomor_antrian }}">
                               <span>panggil</span>
-                            </button>
+                            </button>                          
                           </td>
                       </tr>
                   @endforeach
@@ -164,13 +175,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="//widget.time.is/id.js"></script>
-    <script>
-      time_is_widget.init({
-          Sidoarjo_z41c: {
-              template:"TIME<br>DATE", 
-              date_format:"dayname, dnum monthname year"
-          }
-      });
+    <script defer>
+    time_is_widget.init({
+            Sidoarjo_z41c: {
+                template:"TIME<br>DATE", 
+                date_format:"dayname, dnum monthname year"
+            }
+        });
     </script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
   </body>
