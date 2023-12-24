@@ -118,7 +118,7 @@
           <div class="container-md d-grid gap-2 d-md-block">
             <button type="button" id="btnRefresh" class="shadow-md mx-auto btn btn-outline-primary mt-4 ms-2 mb-4">Refresh</button>
           </div>
-          <div class="container-md bg-white shadow-sm rounded">
+          <div class="container-md bg-white shadow-sm rounded mb-3">
             <table id="tabel" class="table table-striped" style="width:100%">
               <thead>
                   <tr>
@@ -147,6 +147,33 @@
                 @endif
               </tbody>
           </table>
+         
+          <nav aria-label="Page navigation example" class="p-1">
+            <ul class="pagination justify-content-end">
+              @if ($nomor->onFirstPage())
+                <li class="page-item disabled">
+                  <span class="page-link">Previous</span>
+                </li>
+              @else
+                <li class="page-item">
+                  <a class="page-link" href="{{ $nomor->previousPageUrl() }}">Previous</a>
+                </li>
+              @endif
+
+              @for ($i = 1; $i <= $nomor->lastPage(); $i++)
+                <li class="page-item {{ $nomor->currentPage() == $i ? 'active' : '' }}">
+                  <a class="page-link" href="{{ $nomor->url($i) }}">{{ $i }}</a>
+                </li>
+              @endfor
+
+              @if ($nomor->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $nomor->nextPageUrl() }}">Next</a></li>
+              @else
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+              @endif
+            </ul>
+          </nav>
+
           </div>
         </div>
       </div>

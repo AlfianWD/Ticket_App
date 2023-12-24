@@ -12,7 +12,7 @@ class NomorAntrianController extends Controller
     public function view() {
         $formattedDate = Carbon::now('Asia/Jakarta');
 
-        $nomor = Antrian::whereDate('tanggal', $formattedDate)->get();
+        $nomor = Antrian::whereDate('tanggal', $formattedDate)->paginate(10);
 
         $totalAntrian = Antrian::whereDate('tanggal', $formattedDate)->count();
 
