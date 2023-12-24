@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
     var antrianSelanjutnya = localStorage.getItem('antrianSelanjutnya') || document.head.querySelector('meta[name="antrian-selanjutnya"]').getAttribute('content');
     var sisaAntrian = localStorage.getItem('sisaAntrian') || document.head.querySelector('meta[name="sisa-antrian"]').getAttribute('content');
     var btnPanggilPressed = JSON.parse(localStorage.getItem('btnPanggilPressed')) || {};
+    var plusSisaAntrian = localStorage.getItem('sisaAntrian') || document.head.querySelector('meta[name="sisa-antrian"]').getAttribute('content');
 
     localStorage.setItem('totalAntrian', totalAntrian);
     localStorage.setItem('antrianSekarang', antrianSekarang);
     localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
     localStorage.setItem('sisaAntrian', sisaAntrian);
+    localStorage.setItem('plusSisaAntrian', plusSisaAntrian);
 
     document.getElementById('totalAntrian').textContent = totalAntrian;
     document.getElementById('antrianSekarang').textContent = antrianSekarang;
@@ -41,11 +43,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }
+
+            const today = new Date().toLocaleDateString();
+            const savedDate = localStorage.getItem('savedDate');
+
+            if (today !== savedDate) {
+                localStorage.clear();
+                localStorage.setItem('savedDate', today);
+            }
+
+    setInterval(fetchTotalAntrian, 5000);
+    
 });
 
-function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed) {
+function fetchTotalAntrian() {
+    fetch('/get-total-antrian')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const totalAntrian = data.totalAntrian;
+            document.getElementById('totalAntrian').textContent = totalAntrian;
+            localStorage.setItem('totalAntrian', totalAntrian);
+        })
+        .catch(error => console.error('Error fetching total antrian:', error));
+}
 
+function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed) {
     const btnPanggilRow = clickedButton.closest('tr');
+
     if (btnPanggilRow) {
         btnPanggilRow.classList.add('disabled');
         clickedButton.setAttribute('disabled', true);
@@ -54,28 +83,35 @@ function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed
         btnPanggilPressed[nomorAntrian] = true;
         localStorage.setItem('btnPanggilPressed', JSON.stringify(btnPanggilPressed));
 
-        document.getElementById('antrianSekarang').textContent = nomorAntrian;
-        localStorage.setItem('antrianSekarang', nomorAntrian);
-
-        const totalAntrian = parseInt(localStorage.getItem('totalAntrian'));
-        const antrianSekarang = parseInt(nomorAntrian);
+        const antrianSekarang = parseInt(localStorage.getItem('antrianSekarang'));
         const antrianSelanjutnya = parseInt(nomorAntrian) + 1;
-        const sisaAntrian = totalAntrian - antrianSekarang;
+        
+        const sisaAntrian = Math.max(parseInt(localStorage.getItem('sisaAntrian')) - 1, 0);
 
-        document.getElementById('totalAntrian').textContent = totalAntrian;
         document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya;
+        document.getElementById('antrianSekarang').textContent = nomorAntrian;
         document.getElementById('sisaAntrian').textContent = sisaAntrian;
 
-        localStorage.setItem('totalAntrian', totalAntrian);
-        localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
         localStorage.setItem('sisaAntrian', sisaAntrian);
+        localStorage.setItem('antrianSekarang', nomorAntrian);
+        localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
     } else {
         console.error('Elemen closest tr tidak ditemukan.');
     }
 }
 
 document.getElementById('btnRefresh').addEventListener('click', function() {
-    location.reload();
+
+    const totalAntrian = parseInt(localStorage.getItem('totalAntrian')) || 0;
+    const plusSisaAntrian = parseInt(localStorage.getItem('plusSisaAntrian')) || 0;
+
+    if(totalAntrian > plusSisaAntrian) {
+        const sisaAntrian = Math.max(parseInt(localStorage.getItem('sisaAntrian')) + 1, 0);
+        document.getElementById('sisaAntrian').textContent = sisaAntrian;
+        localStorage.setItem('sisaAntrian', sisaAntrian);
+
+        location.reload();
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function() {

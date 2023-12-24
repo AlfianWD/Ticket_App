@@ -35,6 +35,18 @@ class NomorAntrianController extends Controller
             ));
     } 
 
+    public function getTotalAntrian()
+    {
+        try {
+            $formattedDate = Carbon::now('Asia/Jakarta');
+            $totalAntrian = Antrian::whereDate('tanggal', $formattedDate)->count();
+
+            return response()->json(['totalAntrian' => $totalAntrian]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
     public function saveNomorAntrian(Request $request) {
 
         try {

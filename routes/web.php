@@ -29,6 +29,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [NomorAntrianController::class, 'view']);
     Route::post('/panggil-antrian', [NomorAntrianController::class, 'saveDataNomorAntrian']);
+    Route::get('/get-total-antrian', [NomorAntrianController::class, 'getTotalAntrian']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
