@@ -63,6 +63,7 @@ function resetAntrian() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            windows.Location('/resi')
         })
         .catch(error => {
             console.log('gagal mengirim data:', error);

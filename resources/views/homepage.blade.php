@@ -24,32 +24,11 @@
           </div>
         </a>
 
-        <div class="d-flex d-none d-lg-flex">
-          <li class="nav nav-item me-2 text-black">
-            <a class="nav-link text-black" aria-current="page" href="{{ asset('/')}}">Home</a>
-          </li>
-          <li class="nav nav-item dropdown me-2">
-            <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Time
-            </a>
-            <ul class="dropdown-menu-end dropdown-menu">
-              <div class="dropdown-item">
-                <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-dark">
-                  <strong>Waktu di Sidoarjo : </strong> 
-                  <span class="fs-6 text" id="Sidoarjo_z41c"></span> 
-                </a>
-              </div>
-            </ul>
-          </li>
-          <a class="btn btn-outline-info shadow-sm text-black me-4 link-underline link-underline-opacity-0 rounded-pill" href="{{ asset('login') }}">
-            Login
-          </a>
-        </div>
-      
-        <div class="d-flex d-lg-none">
-          <button class="navbar-toggler d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+  
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <i class="bi bi-list fs-1"></i>
           </button>
+
           <div class="offcanvas offcanvas-end text-bg-" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
               <a class="navbar-brand d-inline-flex">
@@ -70,7 +49,7 @@
                   <a class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Time
                   </a>
-                  <ul class="dropdown-menu-end dropdown-menu">
+                  <ul class="dropdown-menu-end dropdown-menu mb-3">
                     <div class="dropdown-item">
                       <a href="https://time.is/Sidoarjo" id="time_is_link" rel="nofollow" class="text-decoration-none text-black">
                         <strong>Waktu di Sidoarjo : </strong> 
@@ -80,7 +59,7 @@
                   </ul>
                 </li>
               </ul>
-              <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black mt-2 link-underline link-underline-opacity-0 rounded text-center" href="{{ asset('login')}}">
+              <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black me-2 link-underline link-underline-opacity-0 rounded text-center" href="{{ asset('login')}}">
                 Login
               </a>
             </div>
@@ -101,7 +80,7 @@
           <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
             <div class="container-lg p-2 border rounded-4">
               <h4 class="text-center">Antrian Sebelumnya</h4>
-              <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">00</h3>
+              <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">000</h3>
             </div>
             <div class="d-grip">
               <a type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="ambilAntrian()">Ambil antrian anda disini</a>
