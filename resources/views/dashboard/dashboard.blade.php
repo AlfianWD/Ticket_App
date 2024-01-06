@@ -9,7 +9,7 @@
     <meta name="sisa-antrian" content="{{ $sisaAntrian ?? 0 }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
 
     <title>Dashboard | Ticket_App</title>
 
