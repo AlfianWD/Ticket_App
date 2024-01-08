@@ -60,7 +60,7 @@
                 </ul>
               </li>
             </ul>
-            <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black me-2 link-underline link-underline-opacity-0 rounded text-center" href="{{ asset('Login')}}">
+            <a class="d-grid gap-2 btn btn-outline-info shadow-sm text-black me-2 link-underline link-underline-opacity-0 rounded text-center" href="{{ asset('login')}}">
               Login
             </a>
           </div>
@@ -68,7 +68,12 @@
     </div>
   </nav>
 
-  <main>
+  <main>   
+    <p class="text-center mt-2" id="countdown-message">
+      Pemberitahuan: Halaman ini akan diarahkan kembali ke homepage setelah countdown selesai.
+      <strong id="countdown"></strong>
+    </p>
+
     <div class="container-fluid">
         <div class="container shadow-sm mt-4 bg-white rounded">
           <div class="container-sm d-inline-flex grap-5">
@@ -80,12 +85,8 @@
         <div class="mx-auto shadow-sm p-5 mt-2 container bg-white rounded">
           <div class="container-lg p-2 border rounded-4">
             <h2 class="text-center">Antrian Anda</h2>
-            <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">000</h3>
+            <h3 id="nomorAntrian" class="text-center mt-4" style="font-size:4rem;">00</h3>
           </div>
-          <div class="d-grip">
-            <a type="button" class="mt-5 btn btn-outline-primary" style="width:100%;" onclick="kembaliKeHalamanUtama()">kembali</a>
-          </div>
-        </div>
     </div>
   </main>
 
