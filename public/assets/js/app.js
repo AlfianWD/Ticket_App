@@ -18,6 +18,8 @@ function ambilAntrian() {
 
     localStorage.setItem('Antrian_button_click', 'true');
 
+    const nomorAntrianInt = String(nomorAntrian).padStart(2, "0");     
+
     fetch('/simpan-nomor-antrian', {
         method: 'POST',
         headers: {
@@ -25,7 +27,7 @@ function ambilAntrian() {
             'X-CSRF-TOKEN' : csrfToken
         },
         body: JSON.stringify({
-            nomorAntrian: nomorAntrian,
+            nomorAntrian: nomorAntrianInt,
             tanggal: tanggal,
             tombolDiklik: true,
         }),

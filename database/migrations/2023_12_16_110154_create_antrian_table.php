@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('antrian', function (Blueprint $table) {
             $table->id('no');
-            $table->integer('nomor_antrian');
+            $table->string('nomor_antrian');
             $table->dateTime('tanggal');
         });
     }
