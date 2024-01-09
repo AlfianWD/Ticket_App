@@ -69,7 +69,7 @@
   </nav>
 
   <main>   
-    <p class="text-center mt-2" id="countdown-message">
+    <p class="text-center m-2" id="countdown-message">
       Pemberitahuan: Halaman ini akan diarahkan kembali ke homepage setelah countdown selesai.
       <strong id="countdown"></strong>
     </p>
