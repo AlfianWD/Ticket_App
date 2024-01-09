@@ -1,14 +1,12 @@
-
 let nomorAntrian = parseInt(localStorage.getItem('nomorAntrian')) || 0; 
 
-const antrianAndaElement = document.getElementById('nomorAntrian');
-
-if(antrianAndaElement){
-    const formatNomorAntrian = String(nomorAntrian).padStart(2, "0");
-    document.getElementById('nomorAntrian').innerText = formatNomorAntrian; 
-}
-
 document.addEventListener("DOMContentLoaded", function () {
+    const antrianAndaElement = document.getElementById('nomorAntrian');
+
+    if(antrianAndaElement){
+        const formatNomorAntrian = String(nomorAntrian).padStart(2, "0");
+        document.getElementById('nomorAntrian').innerText = formatNomorAntrian; 
+    }
 
     const countdownDate = localStorage.getItem('savedDate');
     let startTime, timeDifference;
@@ -17,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
        startTime = new Date(countdownDate).getTime();
        timeDifference = localStorage.getItem('timeDifference') || 0; 
     } else {
-        startTime = new Date().getTime() + 7200000;
+        startTime = new Date().getTime() + 86400000;
         timeDifference = 0;
         localStorage.setItem('savedDate', new Date(startTime).toISOString());
         localStorage.setItem('timeDifference', timeDifference);
     }
-
-
 
     function checkSession() {
         const now = new Date().getTime();
