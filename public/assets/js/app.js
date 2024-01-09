@@ -7,7 +7,7 @@ function updateNomorAntrian() {
     const formatNomorAntrian = String(nomorAntrian).padStart(2, "0");
     document.getElementById('nomorAntrian').innerText = formatNomorAntrian; 
 
-    localStorage.setItem('nomorAntrian', nomorAntrian.toString());
+    localStorage.setItem('nomorAntrian', formatNomorAntrian);
 }
 
 function ambilAntrian() {
@@ -18,7 +18,7 @@ function ambilAntrian() {
 
     localStorage.setItem('Antrian_button_click', 'true');
 
-    const nomorAntrianInt = String(nomorAntrian).padStart(2, "0");     
+    const nomorAntrianStr = String(nomorAntrian).padStart(2, "0");     
 
     fetch('/simpan-nomor-antrian', {
         method: 'POST',
@@ -27,7 +27,7 @@ function ambilAntrian() {
             'X-CSRF-TOKEN' : csrfToken
         },
         body: JSON.stringify({
-            nomorAntrian: nomorAntrianInt,
+            nomorAntrian: nomorAntrianStr,
             tanggal: tanggal,
             tombolDiklik: true,
         }),
@@ -59,13 +59,13 @@ function resetAntrian() {
                 'X-CSRF-TOKEN' : csrfToken
             },
             body: JSON.stringify({
-                resetAntrian: false,
+                resetAntrian: true,
             }),
         })
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            windows.Location('/resi')
+            window.location.href = '/resi';
         })
         .catch(error => {
             console.log('gagal mengirim data:', error);

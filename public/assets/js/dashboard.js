@@ -4,21 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
     var totalAntrian = localStorage.getItem('totalAntrian') || document.head.querySelector('meta[name="total-antrian"]').getAttribute('content');
     var antrianSekarang = localStorage.getItem('antrianSekarang') || document.head.querySelector('meta[name="antrian-sekarang"]').getAttribute('content');
     var antrianSelanjutnya = localStorage.getItem('antrianSelanjutnya') || document.head.querySelector('meta[name="antrian-selanjutnya"]').getAttribute('content');
-    var sisaAntrian = localStorage.getItem('sisaAntrian') || document.head.querySelector('meta[name="sisa-antrian"]').getAttribute('content');
     var btnPanggilPressed = JSON.parse(localStorage.getItem('btnPanggilPressed')) || {};
-    var plusSisaAntrian = localStorage.getItem('sisaAntrian') || document.head.querySelector('meta[name="sisa-antrian"]').getAttribute('content');
 
     localStorage.setItem('totalAntrian', totalAntrian);
     localStorage.setItem('antrianSekarang', antrianSekarang);
     localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
-    localStorage.setItem('sisaAntrian', sisaAntrian);
-    localStorage.setItem('plusSisaAntrian', plusSisaAntrian);
 
     document.getElementById('totalAntrian').textContent = totalAntrian;
     document.getElementById('antrianSekarang').textContent = antrianSekarang;
     document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya;
-    document.getElementById('sisaAntrian').textContent = sisaAntrian;
-
+    
     const tabelBody = document.getElementById('tabelBody');
 
             tabelBody.addEventListener('click', function (event) {
@@ -72,7 +67,7 @@ function fetchTotalAntrian() {
         .catch(error => console.error('Error fetching total antrian:', error));
 }
 
-function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed) {
+function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed, antrianSekarang) {
     const btnPanggilRow = clickedButton.closest('tr');
 
     if (btnPanggilRow) {
@@ -83,35 +78,22 @@ function handlePanggilButtonClick(clickedButton, nomorAntrian, btnPanggilPressed
         btnPanggilPressed[nomorAntrian] = true;
         localStorage.setItem('btnPanggilPressed', JSON.stringify(btnPanggilPressed));
 
-        const antrianSekarang = parseInt(localStorage.getItem('antrianSekarang'));
-        const antrianSelanjutnya = parseInt(nomorAntrian) + 1;
-        
-        const sisaAntrian = Math.max(parseInt(localStorage.getItem('sisaAntrian')) - 1, 0);
+        const antrianSekarangInt = parseInt(nomorAntrian);
+        const antrianSelanjutnya = antrianSekarangInt + 1;
 
-        document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya;
+        document.getElementById('antrianSelanjutnya').textContent = antrianSelanjutnya.toString().padStart(2, "0");
         document.getElementById('antrianSekarang').textContent = nomorAntrian;
-        document.getElementById('sisaAntrian').textContent = sisaAntrian;
 
-        localStorage.setItem('sisaAntrian', sisaAntrian);
+        localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya.toString().padStart(2, "0"));
         localStorage.setItem('antrianSekarang', nomorAntrian);
-        localStorage.setItem('antrianSelanjutnya', antrianSelanjutnya);
     } else {
         console.error('Elemen closest tr tidak ditemukan.');
     }
 }
 
+
 document.getElementById('btnRefresh').addEventListener('click', function() {
-
-    const totalAntrian = parseInt(localStorage.getItem('totalAntrian')) || 0;
-    const plusSisaAntrian = parseInt(localStorage.getItem('plusSisaAntrian')) || 0;
-
-    if(totalAntrian > plusSisaAntrian) {
-        const sisaAntrian = Math.max(parseInt(localStorage.getItem('sisaAntrian')) + 1, 0);
-        document.getElementById('sisaAntrian').textContent = sisaAntrian;
-        localStorage.setItem('sisaAntrian', sisaAntrian);
-
-        location.reload();
-    }
+    location.reload();
 });
 
 document.addEventListener('DOMContentLoaded', function() {

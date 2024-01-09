@@ -103,7 +103,7 @@
           </div>
         </div>
 
-        <div class="container bg-white shadow-sm rounded p-3">
+        {{-- <div class="container bg-white shadow-sm rounded p-3">
           <div class="d-flex align-items-center mb-3">
             <i class="bi bi-person-fill me-2 fs-2"></i>
             <h3 class="fs-5 mt-2">Sisa Antrian</h3>
@@ -112,7 +112,7 @@
           <div>
             <h1 id="sisaAntrian">{{ $sisaAntrian->nomor ?? '0' }}</h1>
           </div>
-        </div>
+        </div> --}}
       </div>
 
       <div class="container-fluid mt-2">
